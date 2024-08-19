@@ -2,10 +2,12 @@ import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BCM)
-led_pin = 18
-GPIO.setup(led_pin, GPIO.OUT)
+relay_pin = 17
+GPIO.setup(relay_pin, GPIO.OUT)
+GPIO.setwarnings(False)
 
-GPIO.output(led_pin, GPIO.HIGH)
-time.sleep(5)
-GPIO.output(led_pin, GPIO.LOW)
-GPIO.cleanup()
+while True:
+    GPIO.output(relay_pin, 1)
+    time.sleep(3)
+    GPIO.output(relay_pin, 0)
+    time.sleep(3)
